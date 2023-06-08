@@ -79,38 +79,11 @@
                         });
                     })
                     .catch(err=> console.log(err))
-                    // window.alert("No user with the username");
-                    // console.log(err)
                 })
                 .catch(err=> console.log(err))
             }
         }
 
-        function fetchFollowers(){
-            let user = document.getElementById('userName').value;
-            const followersTableBody = document.getElementById("followers-table");
-
-            fetch(`https://api.github.com/users/${user}/followers`)
-            .then(response => response.json())
-            .then(followers => {
-                followers.forEach(follower => {
-                const row = document.createElement("tr");
-                const idCell = document.createElement("td");
-                const imageCell = document.createElement("td");
-                const urlCell = document.createElement("td");
-
-                idCell.textContent = follower.id;
-                imageCell.innerHTML = `<img src="${follower.avatar_url}" alt="Avatar" width="50" height="50">`;
-                urlCell.innerHTML = `<a href="${follower.html_url}" target="_blank">${follower.html_url}</a>`;
-
-                row.appendChild(idCell);
-                row.appendChild(imageCell);
-                row.appendChild(urlCell);
-                followersTableBody.appendChild(row);
-                });
-            })
-            .catch(error => console.log(error));            
-        }
    </script>
 
 </body>
