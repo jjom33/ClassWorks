@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    height: 80vh;
+    padding: 20px;
+    text-align: center;
+}
+#search{
+    padding-top: 5vh;
+    align-items: center;
+    display: flex;
+}
+.left {
+    flex: 1;
+}
+.right {
+    display: flex;
+    flex: 1;
+}
+#image{
+    padding: 20px;
+    width:200px;
+    height: 200px;
+    border-radius: 60%;
+    overflow: hidden;
+}
+table{
+    width:80%;
+    height: min-content;
+    padding: 20px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+table th{
+    height:20px;
+}
+table th,
+table td {
+    
+  border: 1px solid black;
+  padding: 8px;
+}

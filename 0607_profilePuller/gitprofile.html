@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Jiyeon Jung -->
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <div id="search">
+        <p>User Name: </p>
+        <input type="text" id="userName" /> 
+        <button onclick="fetchInfo()"> Get User </button>
+    </div>
+
+    <div class="container">
+        <div class="left">
+            <img id="image" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+            <div class="user-info">
+                <div id="username"></div>
+                <div id="bio"></div>
+                <div id="followers"></div>
+                <div id="repositories"></div>
+            </div>
+            
+        </div>
+        <div class="right">
+            <table id="followers-table">
+                <tr>
+                    <th>userid</th>
+                    <th>Image</th>
+                    <th>URL</th>
+                </tr>
+            </table>
+        
+        </div>
+        
+    </div>
+
+    <script type="text/javascript">
+        function fetchInfo(){
+            fetchUser();
+            fetchFollowers();
+        }
+
+        function fetchUser(){
+            let user = document.getElementById('userName').value;
+            if(!user){
+                alert(`User is blank or undefined !`);
+            }
+            else{
+    
+                fetch(`https://api.github.com/users/${user}`)
+                .then(response=>response.json())
+                .then(json=>{
+                    document.getElementById('username').innerHTML=`<span>User's name : ${json.login}</span>`  
+                    document.getElementById('bio').innerHTML=`<span>Bio : ${json.bio}</span>`
+                    document.getElementById('followers').innerHTML=`<span>followers : ${json.followers}</span>` 
+                    document.getElementById('repositories').innerHTML=`<span>Public Repositories : ${json.public_repos}</span>`     
+                    document.getElementById('image').removeAttribute("src")
+                    document.getElementById('image').setAttribute("src",json.avatar_url)
+                    fetch(`https://api.github.com/users/${user}/followers`)
+                    .then(response=>response.json())
+                    .catch(err=> console.log(err))
+                    window.alert("No user with the username");
+                })
+                .catch(err=> console.log(err))
+            }
+        }
+
+        function fetchFollowers(){
+            let user = document.getElementById('userName').value;
+            const followersTableBody = document.getElementById("followers-table");
+
+            fetch(`https://api.github.com/users/${user}/followers`)
+            .then(response => response.json())
+            .then(followers => {
+                followers.forEach(follower => {
+                const row = document.createElement("tr");
+                const idCell = document.createElement("td");
+                const imageCell = document.createElement("td");
+                const urlCell = document.createElement("td");
+
+                idCell.textContent = follower.id;
+                imageCell.innerHTML = `<img src="${follower.avatar_url}" alt="Avatar" width="50" height="50">`;
+                urlCell.innerHTML = `<a href="${follower.html_url}" target="_blank">${follower.html_url}</a>`;
+
+                row.appendChild(idCell);
+                row.appendChild(imageCell);
+                row.appendChild(urlCell);
+                followersTableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.log(error));            
+        }
+   </script>
+
+</body>
+</html>
