@@ -1,5 +1,4 @@
 package corejava2;
-
 import java.util.Scanner;
 
 public class IcecreamShop {
@@ -152,8 +151,6 @@ public class IcecreamShop {
                 System.out.println("Your total price is:       $"+totalPrice);
                 System.out.println("==================================================\n");
             }
-            
-            
         }
         System.out.println("\n==================================================");
         System.out.println("Good bye, "+name +"! Come again :)");
