@@ -4,39 +4,41 @@ import java.util.Scanner;
 
 public class IcecreamShop {
     public static void main(String[] args){
-         Scanner scanner = new Scanner(System.in);
         String userInput = "";
-        String type ="";
+        String type;
         String flavor = "";
         int price = 0;
-        //String input2 = "";
         int quantity = 0;
+
         int totalPrice = 0;
         int count = 0;
         String billStr ="";
 
-        
-        System.out.println("Welcome to the Icecream SHop");
+        Scanner scanner = new Scanner(System.in);
+        // Greeting 
+        System.out.println("Welcome to the ICECREAM SHOP");
         System.out.println("Hello, What's your name?");
         String name = scanner.nextLine();
         System.out.println("Hi "+ name + "! How are you today? ");
-        String feeling = scanner.nextLine();
+        scanner.nextLine();
+        System.out.println("-------------------------------------------------------------------------");
         System.out.print("Great! ");
 
         while (!userInput.equalsIgnoreCase("no")) {
-            System.out.println("What would you like to order? (Say \'no\' to exit the shop) \n1. Scopes \n2. Exquite: ");
+            // Ask for Type of Icecream
+            System.out.println("What would you like to order? (Say \'no\' to exit the shop) \n1. Scopes \n2. Exquite\n");
             userInput = scanner.nextLine().toLowerCase();
-            String bill = "";
-            System.out.println("you said "+userInput);
+
+            // Handle Input for each Type of Icecream: Ask for Flavor
             switch (userInput){
                 case "1":
                 case "scope":
                     type = "scope";
-                    System.out.println("Which flavor do you want? "+
-                                           " \n1. Vanilla "
-                                           + "\n2. Chocolate "
-                                           +" \n3. Strawberry" 
-                                           +"\n4. Mango");
+                    System.out.println("\nWhich flavor do you want? "+
+                                            "\n1. Vanilla     $100"
+                                           +"\n2. Chocolate   $150"
+                                           +"\n3. Strawberry  $150" 
+                                           +"\n4. Mango       $200\n");
                     userInput = scanner.nextLine().toLowerCase();
                     
                     switch (userInput){
@@ -69,10 +71,10 @@ public class IcecreamShop {
                 case "exquite":
                     type = "Exquite";
                     System.out.println("Which flavor do you want? "+
-                                           " \n1. Green tea "
-                                           + "\n2. Black tea "
-                                           +" \n3. Mint" 
-                                           +"\n4. Herb");
+                                            "\n1. Green tea  $100"
+                                           +"\n2. Black tea  $150"
+                                           +"\n3. Mint       $150" 
+                                           +"\n4. Herb       $200\n");
                     userInput = scanner.nextLine().toLowerCase();
                     
                     switch (userInput){
@@ -107,20 +109,30 @@ public class IcecreamShop {
                     userInput = "no";
                     break;
                 default:
-                    System.out.println("I dont understand..");
+                    System.out.println("Um..." +name+ "..? I dont understand..");
                     continue;
             }
-            System.out.println("How many do you want?");
+            // Ask for quantity of the icecream
+            System.out.println("How many do you want?\n");
             quantity = scanner.nextInt();
+            scanner.nextLine();
+
+            // calculate, add to the bill
             int semiTotal = quantity*price;
             count ++;
-            billStr += count + "   "+ flavor + "   "+ price + "   "+ quantity + "   "+ semiTotal +"\n";
+
+            String formattedString = String.format("%d  %-12s $%d   %d   $%d", count, flavor, price, quantity, semiTotal);
+            billStr += formattedString +"\n";//count + "   "+ flavor + "   "+ price + "   "+ quantity + "   "+ semiTotal +"\n";
             totalPrice += semiTotal;
-            System.out.println("No.  Flavor  Price  Qty  Total Price");
+            System.out.println("==================================================");
+            System.out.println("No.  Flavor    Price  Qty  Amount");
+            System.out.println("--------------------------------------------------");
             System.out.println(billStr);
-            System.out.println("Your total price is:     "+totalPrice);
-            userInput="";
-            type=""; flavor=""; price=0;quantity=0;
+            System.out.println("--------------------------------------------------");
+            System.out.println("Your total price is:        "+totalPrice);
+            System.out.println("==================================================");
+            
+            // type=""; flavor=""; price=0;quantity=0;
             
         }
         
