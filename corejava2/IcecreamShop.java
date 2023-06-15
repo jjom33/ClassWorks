@@ -17,20 +17,32 @@ public class IcecreamShop {
         Scanner scanner = new Scanner(System.in);
         // Greeting 
         System.out.println("-------------------------------------------------------------------------");
-        System.out.println("-------------------Welcome to the ICECREAM SHOP--------------------------");
+        System.out.println("===================== Welcome to the ICE CREAM SHOP =====================");
         System.out.println("-------------------------------------------------------------------------");
-        System.out.println("Hello, What's your name?");
+        System.out.println("Hello! What's your name?");
         String name = scanner.nextLine();
-        System.out.println("Hi "+ name + "! How are you today? ");
+        System.out.println("\nHi "+ name + "! How are you today? ");
         scanner.nextLine();
-        System.out.println("Ah, that's why you are here for some icecream! \nHope you are ready!!");
+        System.out.println("\nAh, that's why you are here for some ice cream! \nIs there a ice cream flavor you have in mind? (yes/no)");
+        String isWant = scanner.nextLine();
+        if (isWant.equals("yes")||isWant.equals("y")){
+            System.out.println("\nOh! What is it?");
+            scanner.nextLine();
+            System.out.println("\nAh, you definitely know what is the best.");
+            
+        }else{
+            System.out.println("\nNo worries, we got the best ice creams here!");
+        }
+        scanner.nextLine();
+        System.out.println("\nAlright! Hope you are ready!!");
         scanner.nextLine();
         System.out.println("-------------------------------------------------------------------------");
-        System.out.print("Cool cool! ");
+        System.out.print("\nCool cool! ");
 
         while (!userInput.equalsIgnoreCase("no")) {
             // Ask for Type of Icecream
-            System.out.println("What would you like to order? (Say \'no\' to exit the shop) \n1. Scopes \n2. Exquisite\n");
+            System.out.println("What would you like to order? (Say \'no\' to exit the shop) \n1. Scopes \n2. Exquisite");
+            System.out.println();
             userInput = scanner.nextLine().toLowerCase();
 
             // Handle Input for each Type of Icecream: Ask for Flavor
@@ -42,7 +54,8 @@ public class IcecreamShop {
                                             "\n1. Vanilla     $100"
                                            +"\n2. Chocolate   $150"
                                            +"\n3. Strawberry  $150" 
-                                           +"\n4. Mango       $200\n");
+                                           +"\n4. Mango       $200");
+                    System.out.println();
                     userInput = scanner.nextLine().toLowerCase();
                     
                     switch (userInput){
@@ -74,11 +87,12 @@ public class IcecreamShop {
                 case "2":
                 case "Exquisite":
                     type = "Exquisite";
-                    System.out.println("Which flavor do you want? "+
+                    System.out.println("\nWhich flavor do you want? "+
                                             "\n1. Green tea  $100"
                                            +"\n2. Black tea  $150"
                                            +"\n3. Mint       $150" 
-                                           +"\n4. Herb       $200\n");
+                                           +"\n4. Herb       $200");
+                    System.out.println();
                     userInput = scanner.nextLine().toLowerCase();
                     
                     switch (userInput){
@@ -113,12 +127,13 @@ public class IcecreamShop {
                     userInput = "no";
                     break;
                 default:
-                    System.out.println("Um..." +name+ "..? I dont understand..");
+                    System.out.println("\nUm..." +name+ "..? I dont understand..");
                     continue;
             }
             if(userInput != "no"){
                 // Ask for quantity of the icecream
-                System.out.println("How many do you want?\n");
+                System.out.println("\nHow many do you want?");
+               System.out.println();
                 quantity = scanner.nextInt();
                 scanner.nextLine();
 
@@ -129,19 +144,19 @@ public class IcecreamShop {
                 String formattedString = String.format("%d  %-12s $%d   %d   $%d", count, flavor, price, quantity, semiTotal);
                 billStr += formattedString +"\n";
                 totalPrice += semiTotal;
-                System.out.println("==================================================");
+                System.out.println("\n==================================================");
                 System.out.println("No.  Flavor    Price  Qty  Amount");
                 System.out.println("--------------------------------------------------");
                 System.out.println(billStr);
                 System.out.println("--------------------------------------------------");
                 System.out.println("Your total price is:       $"+totalPrice);
-                System.out.println("==================================================");
+                System.out.println("==================================================\n");
             }
             
             
         }
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("Good bye "+name +"! Come again :)");
+        System.out.println("\n==================================================");
+        System.out.println("Good bye, "+name +"! Come again :)");
         scanner.close();
     }
     
