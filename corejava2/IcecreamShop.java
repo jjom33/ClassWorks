@@ -16,17 +16,21 @@ public class IcecreamShop {
 
         Scanner scanner = new Scanner(System.in);
         // Greeting 
-        System.out.println("Welcome to the ICECREAM SHOP");
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("-------------------Welcome to the ICECREAM SHOP--------------------------");
+        System.out.println("-------------------------------------------------------------------------");
         System.out.println("Hello, What's your name?");
         String name = scanner.nextLine();
         System.out.println("Hi "+ name + "! How are you today? ");
         scanner.nextLine();
+        System.out.println("Ah, that's why you are here for some icecream! \nHope you are ready!!");
+        scanner.nextLine();
         System.out.println("-------------------------------------------------------------------------");
-        System.out.print("Great! ");
+        System.out.print("Cool cool! ");
 
         while (!userInput.equalsIgnoreCase("no")) {
             // Ask for Type of Icecream
-            System.out.println("What would you like to order? (Say \'no\' to exit the shop) \n1. Scopes \n2. Exquite\n");
+            System.out.println("What would you like to order? (Say \'no\' to exit the shop) \n1. Scopes \n2. Exquisite\n");
             userInput = scanner.nextLine().toLowerCase();
 
             // Handle Input for each Type of Icecream: Ask for Flavor
@@ -68,8 +72,8 @@ public class IcecreamShop {
                     }
                     break;
                 case "2":
-                case "exquite":
-                    type = "Exquite";
+                case "Exquisite":
+                    type = "Exquisite";
                     System.out.println("Which flavor do you want? "+
                                             "\n1. Green tea  $100"
                                            +"\n2. Black tea  $150"
@@ -112,31 +116,32 @@ public class IcecreamShop {
                     System.out.println("Um..." +name+ "..? I dont understand..");
                     continue;
             }
-            // Ask for quantity of the icecream
-            System.out.println("How many do you want?\n");
-            quantity = scanner.nextInt();
-            scanner.nextLine();
+            if(userInput != "no"){
+                // Ask for quantity of the icecream
+                System.out.println("How many do you want?\n");
+                quantity = scanner.nextInt();
+                scanner.nextLine();
 
-            // calculate, add to the bill
-            int semiTotal = quantity*price;
-            count ++;
+                // calculate, add to the bill
+                int semiTotal = quantity*price;
+                count ++;
 
-            String formattedString = String.format("%d  %-12s $%d   %d   $%d", count, flavor, price, quantity, semiTotal);
-            billStr += formattedString +"\n";//count + "   "+ flavor + "   "+ price + "   "+ quantity + "   "+ semiTotal +"\n";
-            totalPrice += semiTotal;
-            System.out.println("==================================================");
-            System.out.println("No.  Flavor    Price  Qty  Amount");
-            System.out.println("--------------------------------------------------");
-            System.out.println(billStr);
-            System.out.println("--------------------------------------------------");
-            System.out.println("Your total price is:        "+totalPrice);
-            System.out.println("==================================================");
+                String formattedString = String.format("%d  %-12s $%d   %d   $%d", count, flavor, price, quantity, semiTotal);
+                billStr += formattedString +"\n";
+                totalPrice += semiTotal;
+                System.out.println("==================================================");
+                System.out.println("No.  Flavor    Price  Qty  Amount");
+                System.out.println("--------------------------------------------------");
+                System.out.println(billStr);
+                System.out.println("--------------------------------------------------");
+                System.out.println("Your total price is:       $"+totalPrice);
+                System.out.println("==================================================");
+            }
             
-            // type=""; flavor=""; price=0;quantity=0;
             
         }
-        
-        System.out.println("Exiting the program.");
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Good bye "+name +"! Come again :)");
         scanner.close();
     }
     
