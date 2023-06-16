@@ -2,7 +2,7 @@ package corejava4;
 
 public class BankTask3 {
     public static void main(String[] args){
-// Setting up accounts
+        // Setting up accounts
         PersonalDetails user1 = new PersonalDetails("AB10001", "qwerty111", 8000, "J Jung", "111 A street, A city, NY 1001", "+111101234");
         PersonalDetails user2 = new PersonalDetails("AB10002", "qwerty222", 100500, "Ji Jung", "222 B street, B city, NY 1002", "+111101234");
         PersonalDetails user3 = new PersonalDetails("AB10003", "qwerty333", 500, "Jiy Jung", "333 C street, C city, NY 1003", "+111101234");
@@ -12,19 +12,20 @@ public class BankTask3 {
 
         CheckBalance chatBot = new CheckBalance();
         chatBot.greeting();
+        // Authentication
         PersonalDetails currUserAccount=null;
         String InputId =chatBot.ask("What is your <Account Id>?");
         String InputPassword = chatBot.ask("What is your <Password>?");
         currUserAccount = chatBot.authenticate(InputId, InputPassword, bankAccounts);
-        
         if (currUserAccount == null){
             chatBot.say("Please try again with correct information.");
         }
         //Print personal information
         currUserAccount.printPersonalDetails("name", "address", "mobile number");
         String userInput = chatBot.ask("Hi! I am ABChatbot. How can I help you?  \n1. Check Balance");
+        
+        // Do tasks according to the user input
         while (!userInput.equalsIgnoreCase("no")) {
-    
             switch (userInput){
                 case "1":
                     chatBot.displayBalance(currUserAccount);
@@ -32,10 +33,8 @@ public class BankTask3 {
                 default:
                     System.out.println("Sorry, we dont have that option yet.");
             }
-        userInput = chatBot.ask("Do you want to do something more? (yes / no)");
-    }
+            userInput = chatBot.ask("Do you want to do something more? (yes / no)");
+        }
         chatBot.say("Thank you for using AB BANK! ");
     }   
-
-     
 }
