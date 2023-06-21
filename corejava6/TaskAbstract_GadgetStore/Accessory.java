@@ -1,4 +1,4 @@
-package corejava6.ElectronicShop;
+package corejava6.TaskAbstract_GadgetStore;
 
 public abstract class Accessory extends Product{
     static Accessory[] accessoriesList;

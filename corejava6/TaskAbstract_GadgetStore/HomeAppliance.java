@@ -1,4 +1,4 @@
-package corejava6.ElectronicShop;
+package corejava6.TaskAbstract_GadgetStore;
 
 public abstract class HomeAppliance extends Product{
     static HomeAppliance[] homeAppliancesList;
