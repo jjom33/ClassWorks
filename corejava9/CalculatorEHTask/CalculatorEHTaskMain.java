@@ -1,4 +1,4 @@
-package corejava9;
+package corejava9.CalculatorEHTask;
 
 public class CalculatorEHTaskMain {
     public static void main(String[] args){

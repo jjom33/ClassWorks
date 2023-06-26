@@ -1,4 +1,4 @@
-package corejava9;
+package corejava9.CalculatorEHTask;
 import java.util.InputMismatchException;
 import java.util.Scanner;;
 public class CalculatorEHTask {
